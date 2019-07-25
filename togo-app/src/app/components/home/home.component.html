@@ -1,0 +1,76 @@
+<div class="page home">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="page-title">
+                    <img src="assets/svg/todo-icon.png" class="svg">
+                    TODO List App
+                </h2>
+            </div>
+            <div class="col-md-6">
+                    <form class="example-form">
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Yapılacak Yeni Madde" #todoInput>
+                          </mat-form-field>
+                          <button mat-raised-button color="primary" type="submit" (click)="addTodo(todoInput)">Save</button>
+                    </form>
+            </div>
+           
+        </div>
+        <div class="row ">
+                <div class="col-md-12">
+                        <mat-card class="d-flex">
+                                <div class="example-container">
+                                        <h2>To do</h2>
+                                      
+                                        <div
+                                          cdkDropList
+                                          #todoList="cdkDropList"
+                                          [cdkDropListData]="data.todo"
+                                          [cdkDropListConnectedTo]="[testList]"
+                                          class="example-list"
+                                          (cdkDropListDropped)="drop($event)">
+                                          <div class="example-box" *ngFor="let item of data.todo" cdkDrag>
+                                            <img src="assets/svg/todo-item.png" height="30"> 
+                                            {{item}}
+                                            </div>
+                                        </div>
+                                      </div>
+                                      <div class="example-container">
+                                            <h2>Test</h2>
+                                          
+                                            <div
+                                              cdkDropList
+                                              #testList="cdkDropList"
+                                              [cdkDropListData]="data.test"
+                                              [cdkDropListConnectedTo]="[todoList,doneList]"
+                                              class="example-list"
+                                              (cdkDropListDropped)="drop($event)">
+                                              <div class="example-box" *ngFor="let item of data.test" cdkDrag>
+                                                    <img src="assets/svg/test-item.png" height="28" style="margin-right: 5px">
+                                                    {{item}}</div>
+                                            </div>
+                                          </div>
+                                      <div class="example-container">
+                                        <h2>Done</h2>
+                                      
+                                        <div
+                                          cdkDropList
+                                          #doneList="cdkDropList"
+                                          [cdkDropListData]="data.done"
+                                          [cdkDropListConnectedTo]="[testList]"
+                                          class="example-list"
+                                          (cdkDropListDropped)="drop($event)">
+                                          <div class="example-box" *ngFor="let item of data.done" cdkDrag>
+                                                <img src="assets/svg/done-item.png" height="25" style="margin-right: 5px">
+                                                {{item}}</div>
+                                        </div>
+                                      </div>
+
+                                     
+                                      
+                        </mat-card>
+                </div>
+            </div>
+    </div>
+</div>
