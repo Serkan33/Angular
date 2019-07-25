@@ -1,0 +1,9 @@
+<h3>{{title}}</h3>
+<h3>{{ngfor}}</h3>
+<ul *ngIf="array.length > 0; else arrayEmpty">
+  <li *ngFor="let item of array">{{item}}</li>
+</ul>
+
+<ng-template #arrayEmpty>
+  <p>Array empty</p>
+</ng-template>
